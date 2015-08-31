@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Django Docker Test</title>
+</head>
+
+
+<body>
+	<h1>Main Page</h1>
+
+
+	<form action="{% url 'saveData' %}" method="POST">
+	{%csrf_token%}
+	{% for field in form %}
+		{{field.label}}:
+		{{field}}
+		<br />
+		{% endfor %}
+		<input type="submit" value="Save" />
+	
+	</form>
+
+	{% if persons %}
+	<ol>
+		{% for per in persons %}
+		<li>
+			<label>{{per.name}}</label>
+			<label>{{per.number}}</label>
+		</li>
+
+		{% endfor %}
+	</ol>
+	{% endif %}
+</body>
+</html>
